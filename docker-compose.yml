@@ -2,7 +2,17 @@ version: "3"
 services:
   # frontend:
 
-  # backend:
+  api:
+    build: backend
+    depends_on:
+      - database
+    tty: true
+    volumes:
+      - ./backend/src:/backend/src:cached,ro
+    environment:
+      API_KEY: 528e3e662b69721285d4d27202af4f4a
+    ports:
+      - 3001:3001
 
   database:
     image: mongo
