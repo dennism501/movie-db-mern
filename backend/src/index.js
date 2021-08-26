@@ -1,5 +1,6 @@
 const express = require("express");
 const logger = require("./middleware/logger");
+const movieService = require("./services/movie");
 
 const app = express();
 
@@ -8,8 +9,12 @@ app.use(require("cors")());
 app.use(express.json());
 
 app.get("/api-test", (req, res) => {
-  debugger;
   res.send({ message: process.env.API_KEY }).status(200);
+});
+
+app.get("/api/movies/latest", async (req, res) => {
+  const result = await movieService.getLatestMovies();
+  res.send(result).status(200);
 });
 
 app.listen(3001, () => {
