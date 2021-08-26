@@ -1,5 +1,8 @@
 const fetch = require("node-fetch");
-const { LATEST_MOVIES_URL } = require("../utils/Constants");
+const {
+  LATEST_MOVIES_URL,
+  NOW_PLAYING_MOVIES_URL,
+} = require("../utils/Constants");
 
 const getLatestMovies = async () => {
   try {
@@ -15,7 +18,7 @@ const getLatestMovies = async () => {
 const getNowPlayingMovies = async () => {
   try {
     const api_key = process.env.API_KEY;
-    const result = await fetch(`${LATEST_MOVIES_URL}?api_key=${api_key}`);
+    const result = await fetch(`${NOW_PLAYING_MOVIES_URL}?api_key=${api_key}`);
     const res = await result.json();
     return res;
   } catch (err) {

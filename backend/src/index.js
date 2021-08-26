@@ -13,7 +13,7 @@ app.get("/api-test", (req, res) => {
 });
 
 app.get("/api/movies/latest", async (req, res) => {
-  const result = await movieService.getLatestMovies();
+  const result = await movieService.getNowPlayingMovies();
   res.send(result).status(200);
 });
 
