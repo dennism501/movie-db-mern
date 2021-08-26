@@ -1,28 +1,35 @@
-const fetch = require("node-fetch");
+const { useFetch } = require("../utils/helpers");
 const {
   LATEST_MOVIES_URL,
   NOW_PLAYING_MOVIES_URL,
+  TOP_RATED_MOVIES_URL,
+  UPCOMING_MOVIES_URL,
+  POPULAR_MOVIES_URL,
 } = require("../utils/Constants");
 
 const getLatestMovies = async () => {
-  try {
-    const api_key = process.env.API_KEY;
-    const result = await fetch(`${LATEST_MOVIES_URL}?api_key=${api_key}`);
-    const res = await result.json();
-    return res;
-  } catch (err) {
-    console.error(err);
-  }
+  return await useFetch(LATEST_MOVIES_URL);
 };
 
 const getNowPlayingMovies = async () => {
-  try {
-    const api_key = process.env.API_KEY;
-    const result = await fetch(`${NOW_PLAYING_MOVIES_URL}?api_key=${api_key}`);
-    const res = await result.json();
-    return res;
-  } catch (err) {
-    console.error(err);
-  }
+  return await useFetch(NOW_PLAYING_MOVIES_URL);
 };
-module.exports = { getLatestMovies, getNowPlayingMovies };
+
+const getTopRatedMovies = async () => {
+  return await useFetch(TOP_RATED_MOVIES_URL);
+};
+
+const getUpcomingMovies = async () => {
+  return await useFetch(UPCOMING_MOVIES_URL);
+};
+
+const getPopularMovies = async () => {
+  return await useFetch(POPULAR_MOVIES_URL);
+};
+module.exports = {
+  getLatestMovies,
+  getNowPlayingMovies,
+  getTopRatedMovies,
+  getUpcomingMovies,
+  getPopularMovies,
+};
