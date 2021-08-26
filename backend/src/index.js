@@ -1,12 +1,15 @@
 const express = require("express");
+const logger = require("./middleware/logger");
 
 const app = express();
 
+app.use(logger);
 app.use(require("cors")());
 app.use(express.json());
 
 app.get("/api-test", (req, res) => {
-  res.send({ message: "Health check" });
+  debugger;
+  res.send({ message: process.env.API_KEY }).status(200);
 });
 
 app.listen(3001, () => {

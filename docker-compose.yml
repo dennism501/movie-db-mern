@@ -11,6 +11,7 @@ services:
       - ./backend/src:/backend/src:cached,ro
     environment:
       API_KEY: 528e3e662b69721285d4d27202af4f4a
+      API_URL: https://api.themoviedb.org/3
     ports:
       - 3001:3001
 
