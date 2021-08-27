@@ -7,6 +7,7 @@ const {
   POPULAR_MOVIES_URL,
 } = require("../utils/Constants");
 
+//TODO: Add error handling
 const getLatestMovies = async () => {
   return await useFetch(LATEST_MOVIES_URL);
 };
